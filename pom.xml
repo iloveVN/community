@@ -30,15 +30,13 @@
         </dependency>
 
         <dependency>
-<<<<<<< HEAD
-=======
             <groupId>commons-logging</groupId>
             <artifactId>commons-logging</artifactId>
             <version>1.2</version>
         </dependency>
 
         <dependency>
->>>>>>> 25f99e9c31d525192b3ecbf8416c8439927070dc
+
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>

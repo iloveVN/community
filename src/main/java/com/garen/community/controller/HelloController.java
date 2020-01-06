@@ -1,5 +1,6 @@
 package com.garen.community.controller;
 
+
 import com.garen.community.config.MyException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -33,5 +34,4 @@ public class HelloController {
     public String hello(){
         return "index";
     }
-
 }
