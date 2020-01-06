@@ -23,6 +23,9 @@ public class CustomExceptionHandler {
         else if(ex instanceof MyException){
             map.put("msg","这是自定义异常");
         }
+        else if( ex instanceof RuntimeException) {
+            map.put("msg", "这是RuntimeException: " + ex.getMessage());
+        }
         return map;
     }
 
