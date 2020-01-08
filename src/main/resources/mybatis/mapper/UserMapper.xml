@@ -16,4 +16,8 @@
         select * from user where username = #{username}
     </select>
 
+    <update id="updateUser" parameterType="com.garen.community.domain.User">
+        update user set username=#{username}, birthday=#{birthday}, sex=#{sex}, address=#{address} where id=#{id}
+    </update>
+
 </mapper>

@@ -29,4 +29,10 @@ public class UserController {
         return userSerivce.getUserByName(username);
     }
 
+
+    @GetMapping("/updateuser")
+    public String updateUser(User user) {
+        userSerivce.updateUser(user);
+        return "success";
+    }
  }

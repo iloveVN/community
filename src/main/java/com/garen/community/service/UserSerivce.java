@@ -9,4 +9,6 @@ public interface UserSerivce {
     public void saveUser(User user);
 
     public User getUserByName(String username);
+
+    public void updateUser(User user);
 }

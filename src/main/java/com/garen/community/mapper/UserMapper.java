@@ -11,4 +11,6 @@ public interface UserMapper {
     public void saveUser(User user);
 
     public List<User> getUserByName(String username);
+
+    public void updateUser(User user);
 }
