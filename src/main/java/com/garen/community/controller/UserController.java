@@ -18,6 +18,12 @@ public class UserController {
         return userSerivce.getUser(id);
     }
 
+    @GetMapping("/updateuserbyid")
+    public String updateUserById(User user) {
+        userSerivce.updateUserById(user);
+        return "success";
+    }
+
     @GetMapping("/user")
     public String saveUser(User user) {
         userSerivce.saveUser(user);
@@ -33,6 +39,12 @@ public class UserController {
     @GetMapping("/updateuser")
     public String updateUser(User user) {
         userSerivce.updateUser(user);
+        return "success";
+    }
+
+    @GetMapping("/deluser/{id}")
+    public String deleteUser(@PathVariable("id") Integer id) {
+        userSerivce.deleteUser(id);
         return "success";
     }
  }

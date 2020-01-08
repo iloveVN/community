@@ -6,10 +6,13 @@ import com.garen.community.service.UserSerivce;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -25,10 +28,23 @@ public class UserServiceImpl implements UserSerivce {
     @Autowired
     private RedisTemplate redisTemplate;
 
-    @Cacheable(cacheNames = {"usercache"})
+    @Cacheable(cacheNames = {"usercache"}/*, keyGenerator = "myKeyGenerator"*/)
     @Override
     public User getUser(Integer id) {
         return userMapper.getUser(id);
+    }
+
+    /**
+     * CachePut注解是在方法执行之后，才会执行，也就是说方法体中的代码一定会执行
+     * 要想使用CachePut注解，首先key值要与查询的key值一致，其次要保证必须存在返回值
+     * @param user
+     * @return
+     */
+    @CachePut(cacheNames = {"usercache"}, key= "#user.id")
+    @Override
+    public User updateUserById(User user) {
+        userMapper.updateUser(user);
+        return user;
     }
 
     @Override
@@ -73,6 +89,7 @@ public class UserServiceImpl implements UserSerivce {
      *
      * @param user 用户
      */
+    @Transactional
     public void updateUser(User user) {
         logger.info("更新用户start...");
         userMapper.updateUser(user);
@@ -83,5 +100,11 @@ public class UserServiceImpl implements UserSerivce {
             redisTemplate.delete(key);
             logger.info("更新用户时候，从缓存中删除用户 >> " + user.getUsername());
         }
+    }
+
+    @CacheEvict(cacheNames = {"usercache"}, key="#id")
+    @Override
+    public void deleteUser(Integer id) {
+        System.out.println("缓存值删除了。。。。");
     }
 }
