@@ -3,6 +3,7 @@ package com.garen.community;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.cache.CacheManager;
 import org.springframework.data.redis.core.RedisTemplate;
 
 import javax.sql.DataSource;
@@ -16,6 +17,9 @@ class CommunityApplicationTests {
     @Autowired
     private RedisTemplate redisTemplate;
 
+    @Autowired
+    private CacheManager cacheManager;
+
     @Test
     void contextLoads() {
         System.out.println(dataSource);
@@ -24,6 +28,11 @@ class CommunityApplicationTests {
     @Test
     void testRedisTemplate() {
         redisTemplate.opsForValue().set("aaa", "1111");
+    }
+
+    @Test
+    void testCacheManager() {
+        System.out.println(cacheManager);
     }
 
 }

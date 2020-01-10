@@ -56,6 +56,7 @@ public class UserServiceImpl implements UserSerivce {
      *  根据名称获取用户信息
      *  如果缓存存在，从缓存中获取地址信息
      *  如果缓存不存在，从 DB 中获取地址信息，然后插入缓存
+     *  默认的如果key键存在:,则冒号前面的标识namespace，冒号后面的标识key值
      * @param username
      * @return
      */
