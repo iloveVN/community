@@ -65,4 +65,9 @@ mybatis:
     - classpath:mybatis/mapper/*.xml
     - classpath:com/**/mapper/*.xml
 
+rabbit:
+  custom:
+    exchangeName: test.amqpexchange
+    queueName: test.amqpqueue
+    routingName: test.amqprouting
 
