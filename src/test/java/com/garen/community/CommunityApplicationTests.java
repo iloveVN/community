@@ -44,7 +44,6 @@ class CommunityApplicationTests {
 
     @Test
     void testRabbitTemplate() {
-
         User user = new User();
         user.setId(1);
         user.setSex(1);
@@ -56,10 +55,15 @@ class CommunityApplicationTests {
     @Test
     void testRabbitTemplateMap() {
        Map<String, Object> map = new HashMap<>();
-       map.put("name", "aaaa");
+       map.put("name", "吕高忍");
        map.put("age", 1);
        map.put("choose", true);
        rabbitTemplate.convertAndSend("test.amqpexchange", "test.amqprouting", map);
+    }
+
+    @Test
+    void testRabbitString() {
+        rabbitTemplate.convertAndSend("test.amqpexchange", "test.amqprouting", "ssssss");
     }
 
 
