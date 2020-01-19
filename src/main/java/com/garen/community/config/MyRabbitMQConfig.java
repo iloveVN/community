@@ -61,7 +61,7 @@ public class MyRabbitMQConfig {
 
     /**
      * 编程式的绑定，也可以通过AmqpAdmin对象进行队列、交换机创建和绑定
-     *  对于fanout exchange交换器不需要进行绑定，因为它是对所有队列都添加数据。
+     *  对于fanout exchange交换器不需要通过路由来绑定队列，因为他会对所有的队列都进行通知
      * @return
      */
 //    @Bean
