@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Configuration;
 
 /**
  * MyBatis配置类
+ * 作用：将Mapper接口扫描到容器中
  * Created by macro on 2019/4/8.
  */
 @Configuration

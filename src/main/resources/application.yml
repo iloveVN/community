@@ -7,7 +7,6 @@ spring:
     platform: mysql
     # 下面为连接池的补充设置，应用到上面所有数据源中
     type: com.alibaba.druid.pool.DruidDataSource
-
     # 初始化大小，最小，最大
     initialSize: 1
     minIdle: 3
@@ -58,10 +57,17 @@ spring:
     port: 5672
     username: guest
     password: guest
+  # JPA 配置
+  jpa:
+    hibernate:
+      # 更新或者创建表结构
+      ddl-auto: update
+    # 控制台显示SQL
+    show-sql: true
 #mybatis 配置
 mybatis:
   config-location: classpath:mybatis/mybatis-config.xml
-  mapper-locations:
+  mapper-locations: # 若下列映射文件与Mapper.java接口文件在同一个包中，则次字段无需配置
     - classpath:mybatis/mapper/*.xml
     - classpath:com/**/mapper/*.xml
 
