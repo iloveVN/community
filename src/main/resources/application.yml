@@ -65,6 +65,15 @@ spring:
       ddl-auto: update
     # 控制台显示SQL
     show-sql: true
+  # Jest 配置
+  elasticsearch:
+    jest:
+      uris: http://47.105.154.233:9200
+  # SpringData ElasticSearch 配置
+  data:
+    elasticsearch:
+      cluster-nodes: http://47.105.154.233:9300
+      cluster-name: elasticsearch
 # mybatis 配置
 mybatis:
   config-location: classpath:mybatis/mybatis-config.xml
