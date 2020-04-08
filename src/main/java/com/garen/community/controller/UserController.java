@@ -4,16 +4,23 @@ import com.garen.community.common.api.CommonPage;
 import com.garen.community.common.api.CommonResult;
 import com.garen.community.domain.JpaUser;
 import com.garen.community.domain.User;
+import com.garen.community.domain.UserVo;
 import com.garen.community.mbg.model.TUser;
 import com.garen.community.repository.UserRepository;
 import com.garen.community.service.TUserService;
 import com.garen.community.service.UserSerivce;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
+@Api(tags = "用户管理")
 @RestController
 public class UserController {
 
@@ -26,7 +33,11 @@ public class UserController {
     @Autowired
     private UserRepository userRepository;
 
+    @ApiOperation("根据ID查询用户信息")
     @GetMapping("/user/{id}")
+    @ApiResponses(
+            @ApiResponse(code = 200, message = "操作成功", response = User.class)
+    )
     public User getUser(@PathVariable("id") Integer id) {
         return userSerivce.getUser(id);
     }
@@ -84,5 +95,12 @@ public class UserController {
         JpaUser save = userRepository.save(jpaUser);
         return save;
     }
+
+    // 参数校验
+    @GetMapping("/user/valid")
+    public User getUser(@Valid UserVo userVo) {
+        return userSerivce.getUser(userVo.getId());
+    }
+
 
  }

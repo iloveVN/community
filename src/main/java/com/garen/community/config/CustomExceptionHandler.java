@@ -1,5 +1,8 @@
 package com.garen.community.config;
 
+import org.springframework.validation.BindException;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -25,6 +28,21 @@ public class CustomExceptionHandler {
         }
         else if( ex instanceof RuntimeException) {
             map.put("msg", "这是RuntimeException: " + ex.getMessage());
+        }
+        else if( ex instanceof BindException) {
+            BindException bindException = (BindException)ex;
+            BindingResult bindingResult = bindException.getBindingResult();
+            StringBuilder errMsg = new StringBuilder(bindingResult.getFieldErrors().size() * 16);
+            errMsg.append("Invalid request:");
+            for (int i = 0 ; i < bindingResult.getFieldErrors().size() ; i++) {
+                if(i > 0) {
+                    errMsg.append(",");
+                }
+                FieldError error = bindingResult.getFieldErrors().get(i);
+                errMsg.append(error.getField()+":"+error.getDefaultMessage());
+            }
+            map.put("errcode", 500);
+            map.put("errmsg", errMsg.toString());
         }
         return map;
     }

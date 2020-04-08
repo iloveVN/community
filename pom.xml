@@ -125,11 +125,32 @@
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
 
-        <!-- 配置lomback，用于实体类编写简化get和set等方法 -->
+        <!-- 配置lomback，用于实体类编写简化get和set等方法 如果使用的是java11， 则必须使用1.18.4及以上的高版本，不然会报错
+            Error:java: java.lang.ExceptionInInitializerError
+            com.sun.tools.javac.code.TypeTags
+        -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.16.10</version>
+            <version>1.18.4</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>2.9.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>2.9.2</version>
         </dependency>
 
     </dependencies>

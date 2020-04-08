@@ -22,7 +22,7 @@ import java.time.Duration;
 import java.util.LinkedHashSet;
 import java.util.List;
 
-@Configuration
+//@Configuration
 public class MyCacheManagerConfig {
 
     @Bean

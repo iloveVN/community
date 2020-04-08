@@ -51,6 +51,7 @@ public class MyRabbitMQConfig {
 
     @Bean
     public FanoutExchange createFanoutExchange() {
+        // 是否需要判断如果存在则无需再次创建？
         return new FanoutExchange(exchangeName);
     }
 
