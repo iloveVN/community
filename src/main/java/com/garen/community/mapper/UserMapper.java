@@ -12,5 +12,6 @@ public interface UserMapper {
 
     public List<User> getUserByName(String username);
 
+
     public void updateUser(User user);
 }
