@@ -21,6 +21,7 @@ import java.util.Date;
 @Component
 public class RedisPubSub implements InitializingBean {
 
+
     private static final Logger logger = LoggerFactory.getLogger(RedisPubSub.class);
 
     @Autowired
