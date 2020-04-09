@@ -168,11 +168,14 @@ class CommunityApplicationTests {
 
     @Test
     void testBookSearch() {
-        Book book = new Book();
-        book.setId(1);
-        book.setBookName("南京");
-        book.setAuthor("吕高忍");
-        bookRepository.save(book);
+//        Book book = new Book();
+//        book.setId(1);
+//        book.setBookName("南京");
+//        book.setAuthor("吕高忍");
+//        bookRepository.index(book);
+        for(Book book : bookRepository.findByBookNameLike("南")){
+            System.out.println(book);
+        }
     }
 
 }

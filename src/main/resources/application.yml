@@ -72,8 +72,9 @@ spring:
   # SpringData ElasticSearch 配置
   data:
     elasticsearch:
-      cluster-nodes: http://47.105.154.233:9300
-      cluster-name: elasticsearch
+      cluster-nodes: 47.105.154.233:9300
+      cluster-name: docker-cluster
+      repositories: true
 # mybatis 配置
 mybatis:
   config-location: classpath:mybatis/mybatis-config.xml

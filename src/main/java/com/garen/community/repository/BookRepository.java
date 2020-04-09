@@ -1,7 +1,11 @@
 package com.garen.community.repository;
 
 import com.garen.community.domain.Book;
-import org.springframework.data.elasticsearch.repository.ElasticsearchCrudRepository;
+import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;
 
-public interface BookRepository extends ElasticsearchCrudRepository<Book, Integer> {
+import java.util.List;
+
+public interface BookRepository extends ElasticsearchRepository<Book, Integer> {
+
+    public List<Book> findByBookNameLike(String bookName);
 }
