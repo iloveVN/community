@@ -67,8 +67,11 @@ spring:
     show-sql: true
   # Jest 配置
   elasticsearch:
+    rest:
+      uris: ["http://47.105.154.233:9200"]
     jest:
-      uris: http://47.105.154.233:9200
+      uris: ["http://47.105.154.233:9200"]
+
   # SpringData ElasticSearch 配置
   data:
     elasticsearch:
@@ -100,4 +103,19 @@ rabbit:
 #### redis topic ######
 demo:
   topic: redis/pubsub
+
+
+# 监控
+management:
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  server:
+    servlet:
+      context-path: /manage
+    port: 8181
 

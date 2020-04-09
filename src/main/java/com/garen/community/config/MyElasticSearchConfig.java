@@ -18,6 +18,10 @@ import javax.annotation.PostConstruct;
  *      3)、编写一个ElasticSearchRepository的子接口来操作ES
  *   两种用法
  *      1)、编写一个ElasticSearchRepository的子接口来操作ES
+ *
+ *   重点: 在同时整合Actuator场景时，需要注意，此时Actuator会自动依赖ElasticSearch的REST Client，因此同时Rest默认连接的是本机的elasticSearch即uris: http://localhost:9200
+ *          因此我们需要指定真实的elasticsearch的uris: 本项目使用的是spring.elasticsearch.rest.uris=http://47.105.154.233:9200
+ *
  */
 @Configuration
 public class MyElasticSearchConfig {

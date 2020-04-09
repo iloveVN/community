@@ -8,6 +8,7 @@ import io.searchbox.client.JestClient;
 import io.searchbox.core.Index;
 import io.searchbox.core.Search;
 import io.searchbox.core.SearchResult;
+import org.elasticsearch.client.RestClient;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.shadow.com.univocity.parsers.annotations.UpperCase;
 import org.springframework.amqp.core.AmqpAdmin;
@@ -46,6 +47,9 @@ class CommunityApplicationTests {
 
     @Autowired
     private JestClient jestClient;
+
+    @Autowired
+    private RestClient restClient;
 
     @Autowired
     private BookRepository bookRepository;
