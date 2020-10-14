@@ -29,7 +29,7 @@ public class CustomExceptionHandler {
         else if( ex instanceof RuntimeException) {
             map.put("msg", "这是RuntimeException: " + ex.getMessage());
         }
-        else if( ex instanceof BindException) {
+        else if( ex instanceof BindException) {   // 参数校验
             BindException bindException = (BindException)ex;
             BindingResult bindingResult = bindException.getBindingResult();
             StringBuilder errMsg = new StringBuilder(bindingResult.getFieldErrors().size() * 16);
@@ -41,8 +41,8 @@ public class CustomExceptionHandler {
                 FieldError error = bindingResult.getFieldErrors().get(i);
                 errMsg.append(error.getField()+":"+error.getDefaultMessage());
             }
-            map.put("errcode", 500);
-            map.put("errmsg", errMsg.toString());
+            map.put("code", 500);
+            map.put("msg", errMsg.toString());
         }
         return map;
     }

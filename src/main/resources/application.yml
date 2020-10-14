@@ -58,6 +58,8 @@ spring:
     port: 5672
     username: guest
     password: guest
+    publisher-returns: true   # 消息发送到交换机确认机制, 是否返回回调
+    publisher-confirms: true  # 消息发送到交换器确认机制, 是否确认回调
   # JPA 配置
   jpa:
     hibernate:
@@ -94,8 +96,9 @@ logging:
 # rabbitmq 自定义配置
 rabbit:
   custom:
-    exchangeName: test.amqpexchange
-    queueName: test.amqpqueue
+    exchangeName: FANOUT_EXCHANGE
+    queueNameA: FANOUT_QUEUE_A
+    queueNameB: FANOUT_QUEUE_B
     routingName: test.amqprouting
 
 #### redis topic ######

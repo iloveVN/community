@@ -57,10 +57,10 @@ public class RedisConfig {
         Jackson2JsonRedisSerializer serializer = new Jackson2JsonRedisSerializer(Object.class);
         // 在序列化中增加类信息，否则无法反序列化
         ObjectMapper mapper = new ObjectMapper();
-        mapper.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.ANY);
-        mapper.enableDefaultTyping(ObjectMapper.DefaultTyping.NON_FINAL);
-        serializer.setObjectMapper(mapper);
-        return serializer;
+            mapper.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.ANY);
+            mapper.enableDefaultTyping(ObjectMapper.DefaultTyping.NON_FINAL);
+            serializer.setObjectMapper(mapper);
+            return serializer;
     }
 
     /**

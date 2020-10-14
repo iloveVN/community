@@ -10,6 +10,10 @@ import java.util.Map;
 /**
  * 通过该测试可知，如果我们使用的队列存在不同类型的数值，
  * 那么可以采用这种方式，将不同类型的数据映射到相应的参数中
+ *
+ *  RabbitMQ的消费者
+ * @RabbitListener(queues = "test.amqpqueue") 监听名为test.amqpqueue的队列
+ * @RabbitHandler 表示此方法为接收到消息后的处理方法
  */
 @Component
 @RabbitListener(queues = "test.amqpqueue")
